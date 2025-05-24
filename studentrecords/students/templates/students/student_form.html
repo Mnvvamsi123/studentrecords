@@ -1,0 +1,56 @@
+<!-- students/templates/students/student_form.html -->
+{% extends 'students/base.html' %}
+
+{% block title %}Student Form{% endblock %}
+
+{% block extra_css %}
+<style>
+    .form-wrapper {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .form-wrapper h2 {
+        font-weight: 600;
+        color: #343a40;
+    }
+
+    .form-wrapper form {
+        background-color: #ffffff;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .form-wrapper .form-control {
+        margin-bottom: 1rem;
+    }
+
+    .btn-primary {
+        background-color: #4a90e2;
+        border-color: #4a90e2;
+    }
+
+    .btn-primary:hover {
+        background-color: #357ab8;
+        border-color: #357ab8;
+    }
+
+    .btn-secondary:hover {
+        background-color: #e2e6ea;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="form-wrapper">
+    <h2 class="mb-4">Student Form</h2>
+
+    <form method="post" novalidate>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary px-4 me-2">Save</button>
+        <a href="{% url 'student_list' %}" class="btn btn-outline-secondary px-4">Cancel</a>
+    </form>
+</div>
+{% endblock %}
